@@ -1,4 +1,4 @@
-name: prodamus_liza
+name: fluffychat
 description: Мессенджер для клиентов Prodamus
 publish_to: none
 # On version bump also increase the build number for F-Droid
@@ -109,7 +109,11 @@ dev_dependencies:
 import_sorter:
   ignored_files: # Optional, defaults to []
     - \/lib\/l10n
-
+flutter_launcher_icons:
+  android: true
+  ios: true # можешь включить позже, если нужно
+  image_path: "assets/logo.png" # путь к твоей иконке
+  
 flutter_native_splash:
   color: "#A8A8A8"
   color_dark: "#A8A8A8"
@@ -122,10 +126,6 @@ flutter:
     - assets/
     - assets/sounds/
     - assets/vodozemac/
-flutter_icons:
-  android: true
-  ios: true
-  image_path: "assets/logo.png"
 
 msix_config:
   display_name: Prodamus Liza

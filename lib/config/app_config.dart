@@ -13,12 +13,12 @@ abstract class AppConfig {
 
   static String get defaultHomeserver => _defaultHomeserver;
   static double fontSizeFactor = 1;
-  static const Color chatColor = primaryColor;
-  static Color? colorSchemeSeed = primaryColor;
+  static const Color chatColor = Color.fromARGB(255, 139, 198, 30);
+  static Color? colorSchemeSeed = const Color.fromARGB(255, 87, 236, 130);
   static const double messageFontSize = 16.0;
   static const bool allowOtherHomeservers = true;
   static const bool enableRegistration = true;
-  static const Color primaryColor = Color(0xFF5625BA);
+  static const Color primaryColor = Color.fromARGB(255, 181, 247, 50);
   static const Color primaryColorLight = Color(0xFFCCBDEA);
   static const Color secondaryColor = Color(0xFF41a2bc);
   static String _privacyUrl =
