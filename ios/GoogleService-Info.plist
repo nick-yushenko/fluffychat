@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyCj1Kvk15CKXH9u0U_oeaRpodQt_lPhHkY</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1002775297459</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>im.lizaAI.prodamus</string>
+	<key>PROJECT_ID</key>
+	<string>lisaai-a6ef6</string>
+	<key>STORAGE_BUCKET</key>
+	<string>lisaai-a6ef6.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1002775297459:ios:a567e639d4ce7c4e7b1fc6</string>
+</dict>
+</plist>

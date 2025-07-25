@@ -359,7 +359,7 @@ class BackgroundPush {
       return;
     }
     var endpoint =
-        'https://matrix.gateway.unifiedpush.org/_matrix/push/v1/notify';
+        'https://sygnal.lisa.laba.prodamus.tech/_matrix/push/v1/notify';
     try {
       final url = Uri.parse(newEndpoint)
           .replace(
