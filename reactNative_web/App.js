@@ -10,7 +10,7 @@ export default function App() {
         <SafeAreaView style={styles.container}>
             <StatusBar style="dark" />
             <WebView
-                source={{uri: 'https://fluffychat.im/web/#/home'}}
+                source={{uri: 'https://fluffy-liza.netlify.app'}}
                 startInLoadingState
                 style={{ backgroundColor: '#F2F2F2' }}
                 renderLoading={() => (
