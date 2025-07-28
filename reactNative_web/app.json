@@ -22,6 +22,16 @@
         "NSPhotoLibraryUsageDescription": "Лиза хочет поглазеть на ваши фоточки."
       }
     },
+    "plugins": [
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/notification-icon.png",
+          "color": "#ffffff",
+          "sounds": ["./assets/notification-sound.wav"]
+        }
+      ]
+    ],
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
