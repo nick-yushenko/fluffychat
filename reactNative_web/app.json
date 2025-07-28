@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "fluffyWeb",
+    "name": "Liza Web 01",
     "slug": "app_1",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -13,7 +13,14 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.nickita.fluffychat",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false,
+        "NSMicrophoneUsageDescription": "Лиза хочет вас услышать.",
+        "NSCameraUsageDescription": "Лиза хочет вас увидеть.",
+        "NSPhotoLibraryUsageDescription": "Лиза хочет поглазеть на ваши фоточки."
+      }
     },
     "android": {
       "adaptiveIcon": {
