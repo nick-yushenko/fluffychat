@@ -38,6 +38,10 @@ abstract class AppConfig {
   static const String appOpenUrlScheme = 'im.fluffychat';
   static String _webBaseUrl = 'https://fluffychat.im/web';
 
+  // Настройка шифрования по умолчанию
+  static const bool enableEncryptionByDefault =
+      false; // ← Отключить шифрование по умолчанию
+
   static String get webBaseUrl => _webBaseUrl;
   static const String sourceCodeUrl =
       'https://github.com/krille-chan/fluffychat';

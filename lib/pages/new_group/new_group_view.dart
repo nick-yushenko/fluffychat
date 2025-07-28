@@ -120,21 +120,28 @@ class NewGroupView extends StatelessWidget {
               curve: FluffyThemes.animationCurve,
               child: controller.createGroupType == CreateGroupType.space
                   ? const SizedBox.shrink()
-                  : SwitchListTile.adaptive(
+                  : ListTile(
                       contentPadding:
                           const EdgeInsets.symmetric(horizontal: 32),
-                      secondary: Icon(
-                        Icons.lock_outlined,
-                        color: theme.colorScheme.onSurface,
+                      leading: Icon(
+                        Icons
+                            .lock_open_outlined, // ← Изменена иконка на открытый замок
+                        color: theme.colorScheme.onSurface.withOpacity(0.6),
                       ),
                       title: Text(
-                        L10n.of(context).enableEncryption,
+                        'Шифрование отключено', // ← Универсальный текст
                         style: TextStyle(
-                          color: theme.colorScheme.onSurface,
+                          color: theme.colorScheme.onSurface.withOpacity(0.8),
+                          fontSize: 14,
                         ),
                       ),
-                      value: !controller.publicGroup,
-                      onChanged: null,
+                      subtitle: Text(
+                        'Все сообщения будут доступны на всех устройствах',
+                        style: TextStyle(
+                          color: theme.colorScheme.onSurface.withOpacity(0.6),
+                          fontSize: 12,
+                        ),
+                      ),
                     ),
             ),
             AnimatedSize(

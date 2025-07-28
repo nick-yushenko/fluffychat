@@ -25,8 +25,8 @@ class NewGroup extends StatefulWidget {
 class NewGroupController extends State<NewGroup> {
   TextEditingController nameController = TextEditingController();
 
-  bool publicGroup = false;
-  bool groupCanBeFound = false;
+  bool publicGroup = false; // ← Вернул к приватным группам по умолчанию
+  bool groupCanBeFound = false; // ← Вернул к приватным группам по умолчанию
 
   Uint8List? avatar;
 
@@ -78,6 +78,8 @@ class NewGroupController extends State<NewGroup> {
             type: sdk.EventTypes.RoomAvatar,
             content: {'url': avatarUrl.toString()},
           ),
+        // Шифрование полностью отключено для всех групп
+        // Никакие группы не будут зашифрованы автоматически
       ],
     );
     if (!mounted) return;
@@ -103,6 +105,7 @@ class NewGroupController extends State<NewGroup> {
                 type: sdk.EventTypes.RoomAvatar,
                 content: {'url': avatarUrl.toString()},
               ),
+            // Шифрование полностью отключено для всех пространств
           ],
         );
     if (!mounted) return;
