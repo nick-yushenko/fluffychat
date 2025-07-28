@@ -19,7 +19,8 @@
         "ITSAppUsesNonExemptEncryption": false,
         "NSMicrophoneUsageDescription": "Лиза хочет вас услышать.",
         "NSCameraUsageDescription": "Лиза хочет вас увидеть.",
-        "NSPhotoLibraryUsageDescription": "Лиза хочет поглазеть на ваши фоточки."
+        "NSPhotoLibraryUsageDescription": "Лиза хочет поглазеть на ваши фоточки.",
+        "UIBackgroundModes": ["remote-notification"]
       }
     },
     "plugins": [
