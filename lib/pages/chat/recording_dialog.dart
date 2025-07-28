@@ -95,7 +95,36 @@ class RecordingDialogState extends State<RecordingDialog> {
   @override
   void initState() {
     super.initState();
-    startRecording();
+    if (kIsWeb) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Text('Внимание'),
+            content: Text(
+                'Веб-версия записывает только в формате WAV. Размер файлов может быть очень большим!'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  startRecording();
+                },
+                child: Text('Понятно'),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  Navigator.of(context, rootNavigator: false).pop();
+                },
+                child: Text('Отмена'),
+              ),
+            ],
+          ),
+        );
+      });
+    } else {
+      startRecording();
+    }
   }
 
   @override

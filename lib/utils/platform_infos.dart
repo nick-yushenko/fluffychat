@@ -33,7 +33,8 @@ abstract class PlatformInfos {
       !PlatformInfos.isWindows && !PlatformInfos.isLinux;
 
   /// Web could also record in theory but currently only wav which is too large
-  static bool get platformCanRecord => (isMobile || isMacOS);
+  /// ENABLED for web, but warn: WAV files may be large!
+  static bool get platformCanRecord => (isMobile || isMacOS || isWeb);
 
   static String get clientName =>
       '${AppConfig.applicationName} ${isWeb ? 'web' : Platform.operatingSystem}${kReleaseMode ? '' : 'Debug'}';
