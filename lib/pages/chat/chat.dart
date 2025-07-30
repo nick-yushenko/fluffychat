@@ -8,7 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:collection/collection.dart';
 import 'package:desktop_drop/desktop_drop.dart';
 import 'package:device_info_plus/device_info_plus.dart';
-import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
+
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:matrix/matrix.dart';
@@ -167,8 +167,6 @@ class ChatController extends State<ChatPageWithRoom>
 
   String pendingText = '';
 
-  bool showEmojiPicker = false;
-
   void recreateChat() async {
     final room = this.room;
     final userId = room.directChatMatrixID;
@@ -321,7 +319,6 @@ class ChatController extends State<ChatPageWithRoom>
     inputFocus = FocusNode(onKeyEvent: _customEnterKeyHandling);
 
     scrollController.addListener(_updateScrollController);
-    inputFocus.addListener(_inputFocusListener);
 
     _loadDraft();
     WidgetsBinding.instance.addPostFrameCallback(_shareItems);
@@ -508,7 +505,6 @@ class ChatController extends State<ChatPageWithRoom>
   void dispose() {
     timeline?.cancelSubscriptions();
     timeline = null;
-    inputFocus.removeListener(_inputFocusListener);
     onFocusSub?.cancel();
     super.dispose();
   }
@@ -715,25 +711,6 @@ class ChatController extends State<ChatPageWithRoom>
     });
   }
 
-  void hideEmojiPicker() {
-    setState(() => showEmojiPicker = false);
-  }
-
-  void emojiPickerAction() {
-    if (showEmojiPicker) {
-      inputFocus.requestFocus();
-    } else {
-      inputFocus.unfocus();
-    }
-    setState(() => showEmojiPicker = !showEmojiPicker);
-  }
-
-  void _inputFocusListener() {
-    if (showEmojiPicker && inputFocus.hasFocus) {
-      setState(() => showEmojiPicker = false);
-    }
-  }
-
   void sendLocationAction() async {
     await showAdaptiveDialog(
       context: context,
@@ -761,7 +738,6 @@ class ChatController extends State<ChatPageWithRoom>
   void copyEventsAction() {
     Clipboard.setData(ClipboardData(text: _getSelectedEventString()));
     setState(() {
-      showEmojiPicker = false;
       selectedEvents.clear();
     });
   }
@@ -808,7 +784,6 @@ class ChatController extends State<ChatPageWithRoom>
     );
     if (result.error != null) return;
     setState(() {
-      showEmojiPicker = false;
       selectedEvents.clear();
     });
     ScaffoldMessenger.of(context).showSnackBar(
@@ -876,7 +851,6 @@ class ChatController extends State<ChatPageWithRoom>
       );
     }
     setState(() {
-      showEmojiPicker = false;
       selectedEvents.clear();
     });
   }
@@ -1019,38 +993,8 @@ class ChatController extends State<ChatPageWithRoom>
     scrollController.jumpTo(0);
   }
 
-  void onEmojiSelected(_, Emoji? emoji) {
-    typeEmoji(emoji);
-    onInputBarChanged(sendController.text);
-  }
-
-  void typeEmoji(Emoji? emoji) {
-    if (emoji == null) return;
-    final text = sendController.text;
-    final selection = sendController.selection;
-    final newText = sendController.text.isEmpty
-        ? emoji.emoji
-        : text.replaceRange(selection.start, selection.end, emoji.emoji);
-    sendController.value = TextEditingValue(
-      text: newText,
-      selection: TextSelection.collapsed(
-        // don't forget an UTF-8 combined emoji might have a length > 1
-        offset: selection.baseOffset + emoji.emoji.length,
-      ),
-    );
-  }
-
-  void emojiPickerBackspace() {
-    sendController
-      ..text = sendController.text.characters.skipLast(1).toString()
-      ..selection = TextSelection.fromPosition(
-        TextPosition(offset: sendController.text.length),
-      );
-  }
-
   void clearSelectedEvents() => setState(() {
         selectedEvents.clear();
-        showEmojiPicker = false;
       });
 
   void clearSingleSelectedEvent() {

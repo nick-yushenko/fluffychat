@@ -24,7 +24,6 @@ import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/mxc_image.dart';
 import 'package:fluffychat/widgets/unread_rooms_badge.dart';
 import '../../utils/stream_extension.dart';
-import 'chat_emoji_picker.dart';
 import 'chat_input_row.dart';
 
 enum _EventContextAction { info, report }
@@ -150,13 +149,11 @@ class ChatView extends StatelessWidget {
     final accountConfig = Matrix.of(context).client.applicationAccountConfig;
 
     return PopScope(
-      canPop: controller.selectedEvents.isEmpty && !controller.showEmojiPicker,
+      canPop: controller.selectedEvents.isEmpty,
       onPopInvokedWithResult: (pop, _) async {
         if (pop) return;
         if (controller.selectedEvents.isNotEmpty) {
           controller.clearSelectedEvents();
-        } else if (controller.showEmojiPicker) {
-          controller.emojiPickerAction();
         }
       },
       child: StreamBuilder(
@@ -363,7 +360,6 @@ class ChatView extends StatelessWidget {
                                         children: [
                                           ReplyDisplay(controller),
                                           ChatInputRow(controller),
-                                          ChatEmojiPicker(controller),
                                         ],
                                       ),
                               ),

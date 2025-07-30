@@ -1,7 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/cupertino.dart';
 
 import 'app_config.dart';
+
+Color defaultSelectionColor(BuildContext context) {
+  if (Theme.of(context).platform == TargetPlatform.iOS) {
+    return CupertinoColors.systemBlue.withAlpha(64);
+  } else {
+    return const Color(0x6633B5E5); // Android default blue
+  }
+}
+
+Color defaultSelectionHandleColor(BuildContext context) {
+  if (Theme.of(context).platform == TargetPlatform.iOS) {
+    return CupertinoColors.systemBlue;
+  } else {
+    return const Color(0xFF33B5E5); // Android default
+  }
+}
 
 abstract class FluffyThemes {
   static const double columnWidth = 380.0;
@@ -71,7 +88,7 @@ abstract class FluffyThemes {
         ),
       ),
       textSelectionTheme: TextSelectionThemeData(
-        selectionColor: colorScheme.onSurface.withAlpha(128),
+        selectionColor: colorScheme.onSurface.withAlpha(64),
         selectionHandleColor: colorScheme.secondary,
       ),
       inputDecorationTheme: InputDecorationTheme(

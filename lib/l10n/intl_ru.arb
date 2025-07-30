@@ -2052,7 +2052,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "writeAMessage": "Напишите сообщение…что-то изменилось",
+  "writeAMessage": "Сообщение",
   "@writeAMessage": {
     "type": "String",
     "placeholders": {}

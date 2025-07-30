@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:animations/animations.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
@@ -116,7 +115,7 @@ class ChatInputRow extends StatelessWidget {
               AnimatedContainer(
                 duration: FluffyThemes.animationDuration,
                 curve: FluffyThemes.animationCurve,
-                width: controller.sendController.text.isNotEmpty ? 0 : height,
+                width: height,
                 height: height,
                 alignment: Alignment.center,
                 decoration: const BoxDecoration(),
@@ -185,7 +184,7 @@ class ChatInputRow extends StatelessWidget {
                 AnimatedContainer(
                   duration: FluffyThemes.animationDuration,
                   curve: FluffyThemes.animationCurve,
-                  width: controller.sendController.text.isNotEmpty ? 0 : height,
+                  width: height,
                   height: height,
                   alignment: Alignment.center,
                   decoration: const BoxDecoration(),
@@ -225,37 +224,6 @@ class ChatInputRow extends StatelessWidget {
                     ],
                   ),
                 ),
-              Container(
-                height: height,
-                width: height,
-                alignment: Alignment.center,
-                child: IconButton(
-                  tooltip: L10n.of(context).emojis,
-                  color: theme.colorScheme.onPrimaryContainer,
-                  icon: PageTransitionSwitcher(
-                    transitionBuilder: (
-                      Widget child,
-                      Animation<double> primaryAnimation,
-                      Animation<double> secondaryAnimation,
-                    ) {
-                      return SharedAxisTransition(
-                        animation: primaryAnimation,
-                        secondaryAnimation: secondaryAnimation,
-                        transitionType: SharedAxisTransitionType.scaled,
-                        fillColor: Colors.transparent,
-                        child: child,
-                      );
-                    },
-                    child: Icon(
-                      controller.showEmojiPicker
-                          ? Icons.keyboard
-                          : Icons.add_reaction_outlined,
-                      key: ValueKey(controller.showEmojiPicker),
-                    ),
-                  ),
-                  onPressed: controller.emojiPickerAction,
-                ),
-              ),
               if (Matrix.of(context).isMultiAccount &&
                   Matrix.of(context).hasComplexBundles &&
                   Matrix.of(context).currentBundle!.length > 1)
